@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb as faSolidLightbulb} from '@fortawesome/free-solid-svg-icons'
-import { faLightbulb as faRegularLightbulb} from '@fortawesome/free-regular-svg-icons'
 import parse from 'html-react-parser';
 import moment from "moment";
 
 import { fetchData } from '../../common.api';
-import { BASE_URL, PALETTE } from "../../common.constant";
+import { BASE_URL } from "../../common.constant";
 import { IData } from '../../common.type';
 
 import Loader from '../Loader/Loader';
 import Fallback from '../Fallback/Fallback';
+import ThemeButton from '../ThemeButton/ThemeButton';
 
-import { StyledContainer, StyledAuthorName, StyledArticle, StyledDate, StyledHeading, StyledImage, StyledThemeButton } from './Article.styled';
+import { StyledContainer, StyledAuthorName, StyledArticle, StyledDate, StyledHeading, StyledImage } from './Article.styled';
 
 function App() {
   const [data, setData] = useState<IData | null>(null);
@@ -34,11 +32,11 @@ function App() {
   };
 
   const hasContent = data && !isLoading && !isError && <>
-    <StyledDate>Published {moment(data.date.value).utc().format('LL')}</StyledDate>
-    <StyledHeading>{data.heading.value}</StyledHeading>
-    <StyledAuthorName>{data.author.value}</StyledAuthorName>
-    <StyledArticle>
-      {data.body.values.map(item => <>{parse(item)}</>)}
+    <StyledDate aria-label='The date of publication'>Published {moment(data.date.value).utc().format('LL')}</StyledDate>
+    <StyledHeading aria-label='The article title'>{data.heading.value}</StyledHeading>
+    <StyledAuthorName aria-label='The author name'>{data.author.value}</StyledAuthorName>
+    <StyledArticle aria-label='The main text of the article'>
+      {data.body.values.map((item, index) => <div key={index}>{parse(item)}</div>)}
     </StyledArticle>
     <StyledImage src={BASE_URL + data.mainImage.value.leadImage.url} alt={data.mainImage.value.leadImageCaption.value}></StyledImage>
   </>;
@@ -49,9 +47,7 @@ function App() {
 
   return (
     <StyledContainer $darkTheme={isDarkTheme}>
-        <StyledThemeButton $darkTheme={isDarkTheme} onClick={onChangeTheme}>
-        <FontAwesomeIcon style={{ 'color': isDarkTheme ? PALETTE.DARK_MAIN_COLOR : PALETTE.LIGHT_MAIN_COLOR, 'width': '50%', 'height': '50%' }} icon={isDarkTheme ? faSolidLightbulb : faRegularLightbulb } />
-        </StyledThemeButton>
+        <ThemeButton isDarkTheme={isDarkTheme} onChangeTheme={onChangeTheme} />
         {hasContent}
         {hasLoader}
         {hasError}

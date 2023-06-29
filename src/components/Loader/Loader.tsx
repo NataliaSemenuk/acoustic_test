@@ -6,7 +6,7 @@ type LoaderPropType = {
 
 function Loader({ isDarkTheme }: LoaderPropType) {  
   return (
-    <StyledContainer $darkTheme={isDarkTheme}/>
+    <StyledContainer aria-label='Loading content' $darkTheme={isDarkTheme}/>
   );
 }
 

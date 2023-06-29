@@ -38,7 +38,7 @@ export const StyledDate = styled.span`
   font-size: 20px;
 `;
 
-export const StyledHeading = styled.span`
+export const StyledHeading = styled.h1`
   font-size: 64px;
   margin: 0 auto;
   padding: 0.1em 1em;
@@ -49,21 +49,4 @@ export const StyledImage = styled.img`
   height: 100%;
   margin: 0.5em 1em;
   padding: 0.25em 1em;
-`;
-
-export const StyledThemeButton = styled.button<{ $darkTheme?: boolean; }>`
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  right: 50px;
-  top: 50px;
-  background-color: ${PALETTE.LIGHT_MAIN_COLOR};
-  border: 0;
-  border-radius: 100%;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  cursor: pointer;
-      
-  ${props => !props.$darkTheme && css`
-    background-color: ${PALETTE.DARK_MAIN_COLOR};
-  `}
 `;

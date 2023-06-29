@@ -4,7 +4,7 @@ export interface IData {
         value: string,
     },
     body: {
-        elementType: "formattedtext"
+        elementType: "formattedtext",
         values: ['<h2><span style="font-family:&#39;arial&#39; , &#3…lvetica&#39; , sans-serif">Hey there</span></h2>\n', '<p>Lorem ipsum dolor sit amet, consectetur adipisc…officia deserunt mollit anim id est laborum.</p>\n'],
     }
     date: {

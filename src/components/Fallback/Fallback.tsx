@@ -11,7 +11,7 @@ type FallbackPropType = {
 
 function Fallback({ isDarkTheme }: FallbackPropType) {  
   return (
-    <StyledContainer>
+    <StyledContainer aria-label='Error loading content'>
       <FontAwesomeIcon style={{ 'color': isDarkTheme ? PALETTE.LIGHT_MAIN_COLOR : PALETTE.DARK_MAIN_COLOR, 'width': '30%', 'height': '30%' }} icon={faBug} />
       <StyledTitle $darkTheme={isDarkTheme}>Something went wrong!</StyledTitle>
     </StyledContainer>
