@@ -1,20 +1,40 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import { PALETTE } from '../../common.constant';
+import { ThemeNames } from '../../common.enum';
 
 import ThemeButton from './ThemeButton';
 
-test('onChangeTheme works', async () => {
-  const onChangeTheme = jest.fn();
-  
-  render(<ThemeButton onChangeTheme={onChangeTheme} isDarkTheme={true}/>);
+describe('ThemeButton component', () => {
+  test('onChangeTheme works', () => {
+    const onChangeTheme = jest.fn();
+    
+    render(<ThemeButton onChangeTheme={onChangeTheme} isDarkTheme={true}/>);
 
-  const button = screen.getByLabelText('The button to change the page theme');
+    const button = screen.getByLabelText(`The button to change the page theme. The current theme is ${ThemeNames.DARK}`);
 
-  fireEvent.click(button);
+    userEvent.click(button);
 
-  // TODO
-  // expect(button).toHaveStyle(`background-color: ${PALETTE.DARK_MAIN_COLOR}`);
-  expect(button).toBeInTheDocument();
-  expect(onChangeTheme).toBeCalled();
+    expect(onChangeTheme).toBeCalled();
+  });
+
+  test('The current theme is dark', () => {
+    const onChangeTheme = jest.fn();
+    
+    render(<ThemeButton onChangeTheme={onChangeTheme} isDarkTheme={true}/>);
+
+    const darkThemeButton = screen.getByLabelText(`The button to change the page theme. The current theme is ${ThemeNames.DARK}`);
+    
+    expect(darkThemeButton).toBeInTheDocument();
+  });
+
+  test('The current theme is light', () => {
+    const onChangeTheme = jest.fn();
+    
+    render(<ThemeButton onChangeTheme={onChangeTheme} isDarkTheme={false}/>);
+
+    const lightThemeButton = screen.getByLabelText(`The button to change the page theme. The current theme is ${ThemeNames.LIGHT}`);
+    
+    expect(lightThemeButton).toBeInTheDocument();
+  });
 });
