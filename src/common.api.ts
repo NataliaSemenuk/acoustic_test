@@ -1,16 +1,27 @@
 import { API_PATH, BASE_URL } from "./common.constant";
 import { IData } from "./common.type";
 
-export const fetchData = async (): Promise<IData | null> => {
+export const fetchData = async (): Promise<{ data: IData | null, isError: boolean }> => {
     try {
         const response = await fetch(BASE_URL + API_PATH);
+
+        if (!response.ok) {
+            throw new Error("Network response was not OK! Status code: " + response.status);
+        }
+
         const data = await response.json();
-
-        return data.elements;
+        
+        return {
+            data: data.elements,
+            isError: false
+        };
     } catch (error) {
-        console.error('Something went wrong!', error);
+        console.error(error);
 
-        return null;
+        return {
+            data: null,
+            isError: true
+        };
     }
 
 }

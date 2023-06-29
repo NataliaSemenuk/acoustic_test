@@ -1,5 +1,6 @@
+import Article from '../Article/Article';
+
 import { StyledApp } from './App.styled';
-import Article from './components/Article/Article';
 
 function App() {
   return (
