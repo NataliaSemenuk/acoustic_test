@@ -16,4 +16,23 @@ export const StyledThemeButton = styled.button<{ $darkTheme?: boolean; }>`
   ${props => !props.$darkTheme && css`
     background-color: ${PALETTE.DARK_MAIN_COLOR};
   `}
+
+  @media screen and (max-width: 900px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 55px;
+    height: 55px;
+    right: 35px;
+    top: 35px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 45px;
+    height: 45px;
+    right: 25px;
+    top: 25px;
+  }
 `;

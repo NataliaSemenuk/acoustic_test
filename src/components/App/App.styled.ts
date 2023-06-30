@@ -6,6 +6,17 @@ export const StyledApp = styled.div`
   font-family: 'Poppins', sans-serif;
   font-size: 22px;
   background-color: rgb(41, 46, 56, 0.6);
-  padding: 0 0 60px 0;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
+
+  @media screen and (max-width: 900px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 12px;
+  }
 `;
