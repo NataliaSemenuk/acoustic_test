@@ -47,6 +47,4 @@ export const StyledHeading = styled.h1`
 export const StyledImage = styled.img`
   width: 100%;
   height: 100%;
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
 `;

@@ -4,7 +4,7 @@ import moment from "moment";
 
 import { fetchData } from '../../common.api';
 import { BASE_URL } from "../../common.constant";
-import { IData } from '../../common.type';
+import { IData } from '../../common.interface';
 
 import Loader from '../Loader/Loader';
 import Fallback from '../Fallback/Fallback';

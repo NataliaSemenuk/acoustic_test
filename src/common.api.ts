@@ -1,5 +1,5 @@
 import { API_PATH, BASE_URL } from "./common.constant";
-import { IData } from "./common.type";
+import { IData } from "./common.interface";
 
 export const fetchData = async (): Promise<{ data: IData | null, isError: boolean }> => {
     try {
